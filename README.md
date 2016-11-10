@@ -15,19 +15,10 @@ This service is driven using Maven. To run locally simply execute the following 
 > ./mvnw spring-boot:run
 ```
 
-To run tests
-------------
-
-This microservice comes with some rudimentary tests as a good starting point for writing your own. Use the following command to execute the tests using Maven:
-
-```shell
-> ./mvnw test
-```
-
 On Windows:
 
 ```shell
-> mvnw.cmd test
+> mvnw.cmd spring-boot:run
 ```
 
 ---

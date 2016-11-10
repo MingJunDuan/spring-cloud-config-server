@@ -1,4 +1,4 @@
-package com.russmiles.antifragilesoftware.configurationserver;
+package com.atomist.configurationserver;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableAutoConfiguration
 @EnableConfigServer
-@EnableDiscoveryClient
 public class ConfigServerApplication {
 
 	public static void main(String[] args) {
