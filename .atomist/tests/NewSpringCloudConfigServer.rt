@@ -1,0 +1,11 @@
+scenario NewSpringCloudConfigServer should create a new project based on this archive
+
+given
+  Empty
+
+when
+  /* Run the default generator */
+  NewSpringCloudConfigServer
+
+then
+  NoChange

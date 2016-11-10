@@ -1,0 +1,5 @@
+@generator
+editor NewSpringCloudConfigServer
+
+with project
+  do fileExists ".provenance.txt"
