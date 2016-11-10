@@ -1,9 +1,10 @@
-group: mygroup
-artifact: spring-cloud
+group: atomist-project-templates
+artifact: spring-cloud-config-server
 version: "0.1.0"
 
 requires: "1.1.3-20161025171005"
 
 dependencies:
+  - "atomist-project-templates:common-editors:2.5.0"
 
 extensions:

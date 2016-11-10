@@ -1,11 +1,11 @@
 scenario NewSpringCloudConfigServer should create a new project based on this archive
 
+let project_name = "new-config-server"
 given
-  Empty
+  ArchiveRoot
 
 when
-  /* Run the default generator */
   NewSpringCloudConfigServer
 
 then
-  NoChange
+  fileExists "README.md"
