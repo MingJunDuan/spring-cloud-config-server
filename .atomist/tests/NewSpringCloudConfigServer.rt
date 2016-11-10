@@ -9,3 +9,4 @@ when
 
 then
   fileExists "README.md"
+  and { !result.fileExists("LICENSE") }
