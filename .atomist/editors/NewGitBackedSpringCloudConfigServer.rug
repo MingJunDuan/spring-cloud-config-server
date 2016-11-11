@@ -19,7 +19,7 @@
 @tag "spring-cloud"
 @description "Creates a new Spring Cloud Config Server project"
 @generator
-editor NewSpringCloudConfigServer
+editor NewGitBackedSpringCloudConfigServer
 
 uses atomist-project-templates.common-editors.PomParameterizer
 uses atomist-project-templates.common-editors.PackageMove
@@ -64,13 +64,24 @@ param description: .*
 @validInput "A valid Java package name, i.e. com.myorg"
 param root_package: @java_package
 
+@default "https://github.com/atomist-project-templates/config-repo"
+@displayName "Git Repo Location"
+@optional
+@description "Git repository location for configuration to serve (i.e. https://github.com/atomist-project-templates/sample-config-repo)"
+@validInput "A valid URI"
+param git_repo_location: @url
+
 let old_package = "com.atomist.configurationserver"
+let default_git_repo_location = "uri: https://github.com/atomist-project-templates/config-repo"
 
 SwitchReadmes
 PomParameterizer name = project_name
 PackageMove new_package = root_package
 AddCreationDateToReadme
 DeleteLicense
+
+with file f when name="application.yml"
+  do replace default_git_repo_location { "uri: " + git_repo_location }
 
 
 @description "Switches READMEs replacing markers with a set of parameters"

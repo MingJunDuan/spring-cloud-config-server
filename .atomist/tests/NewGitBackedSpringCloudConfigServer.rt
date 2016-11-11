@@ -1,0 +1,55 @@
+scenario NewGitBackedSpringCloudConfigServer should create a new project based on this archive
+
+let project_name = "new-config-server"
+
+given
+  ArchiveRoot
+
+when
+  NewGitBackedSpringCloudConfigServer
+
+then
+  fileExists "README.md"
+  and { !result.fileExists("LICENSE") }
+  and fileContains "src/main/resources/application.yml" "uri: https://github.com/atomist-project-templates/config-repo"
+
+
+scenario NewGitBackedSpringCloudConfigServer should create a new project overriding the default location of the Git properties repository
+
+let project_name = "new-config-server"
+let git_repo_location = "https://github.com/someotherorg/someotherrepo"
+
+given
+  ArchiveRoot
+
+when
+  NewGitBackedSpringCloudConfigServer
+
+then
+  fileContains "src/main/resources/application.yml" "uri: https://github.com/someotherorg/someotherrepo"
+
+
+scenario NewGitBackedSpringCloudConfigServer should create a new project with a pom with the right details in it
+
+let project_name = "new-config-server"
+
+let artifact_id = "my-new-config-server"
+
+let group_id = "com.mygroup"
+
+let version = "1.0.0"
+
+let description = "My config server 101"
+
+given
+  ArchiveRoot
+
+when
+  NewGitBackedSpringCloudConfigServer
+
+then
+  fileContains "pom.xml" { "<artifactId>" + artifact_id + "</artifactId>" }
+  and fileContains "pom.xml" { "<groupId>" + group_id + "</groupId>" }
+  and fileContains "pom.xml" { "<version>" + version + "</version>" }
+  and fileContains "pom.xml" { "<description>" + description + "</description>" }
+  and fileContains "src/main/resources/application.yml" "uri: https://github.com/atomist-project-templates/config-repo"

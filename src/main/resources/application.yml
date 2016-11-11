@@ -8,7 +8,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/atomist-project-templates/sample-config-repo
+          uri: https://github.com/atomist-project-templates/config-repo
 
 endpoints:
   restart:
